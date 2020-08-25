@@ -52,6 +52,12 @@ public class Upute {
     Otvoriti file, napraviti novu bazu i pratiti upute i izmjeniti sto je potrebno
     Nakon toga u paketu utility napraviti novu klasu hibernateUtil
     kod sam kopirao i nalazi se tamo.
+    
+    ######### 4. U klasu Osoba  ##########
+    import javax.persistence.Entity
+    
+    @Entity
+    @Table(name="osoba")
     */
 
 
