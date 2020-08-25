@@ -58,6 +58,17 @@ public class Upute {
     
     @Entity
     @Table(name="osoba")
+    
+    *******5 ***********
+    tools options misc janitor run janitor now
+    
+    
+    VAZNO 
+    U ovom slucaju idem na D apacheNetbeansWorkspace te ulazim u projekt, 
+    TARGET
+    unutra ce se nekad podatci poremetiti 
+    Tad mogu sve da obrisem 
+    Nakon toga clean and build pa ce se sve ponovno kreirati i vratit u normalu.
     */
 
 
