@@ -5,9 +5,11 @@
  */
 package hr.edunova.horvatzavrsnirad;
 
+import hr.edunova.horvat.utility.HibernateUtil;
+
 
 public class Start {
     public static void main(String[] args) {
-        System.out.println("Test");
+        HibernateUtil.getSessionFactory().openSession();
     }
 }

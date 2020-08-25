@@ -13,10 +13,9 @@ public class Upute {
     Svaki iduci put: git commit, git push to upstream.
     
    
-    1: Project files pom.xml  
+   ################ 1: Project files pom.xml  ################
     
-    
-       <!-- Obavezno jedan element dependencies  -->
+    <!-- Obavezno jedan element dependencies  -->
     <dependencies>
         <!--OVDJE SE DODAJU ZAVISNOSTI -->
         <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
@@ -27,5 +26,35 @@ public class Upute {
     <version>2.6.2</version>
 </dependency>
 
+   NAKON STO DODAM OVO POJAVIT CE MII SE U FILES TARGET KOJI NE POSTAVLJA NA GIT ODREDJENE FILEOVE
+    
+    
+    
+    U SLUCAJU GRESKE u vezi github: team ->  rever modidfication ->  revert
+    
+    ##################2.  ORM java hibernate ##################
+   
+    mapiranje java klase na tablice baze podataka. 
+    Alat hibernate se koristi da to uradi. 
+    Googlaj Hibernate maven
+    
+    dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.4.20.Final</version>
+</dependency>
+    
+    ##########3. dodati u files -> src main gdje je java novi folder resources ###########
+    tu ide konfiguracija za hibernate 
+    omogocuje da se zna fdje je baza, kako se radi sa bazom.
+    file se zove hibernate.cfg
+    
+    Otvoriti file, napraviti novu bazu i pratiti upute i izmjeniti sto je potrebno
+    Nakon toga u paketu utility napraviti novu klasu hibernateUtil
+    kod sam kopirao i nalazi se tamo.
     */
+
+
+
+
 }
