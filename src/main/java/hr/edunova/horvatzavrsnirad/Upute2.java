@@ -45,9 +45,15 @@ public class Upute2 {
     
     nakon toga otici u hiberante config te dodati polaznik i predavac
    
-    ************ Grupa ***************
+    ************4. Grupa ***************
     
     u grupi su upute za many to many  i many to one 
+    
+    
+    ************5. Nadredjen/ onaj koji ide sam na sebe u grupi smjer
+    
+    Za kreitanje novog ERA dijagrama :
+    ctrl + razmaknica za oznacit, pa desni klik new Era dijagram
     */
     
 }

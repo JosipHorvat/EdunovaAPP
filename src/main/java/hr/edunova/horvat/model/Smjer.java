@@ -7,6 +7,7 @@ package hr.edunova.horvat.model;
 
 import java.math.BigDecimal;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,8 +25,17 @@ public class Smjer extends Entitet{
     private Boolean verificiran;
     
     // veza sam na sebe nadredjen
-   // private Smjer nadreden;
+    @ManyToOne
+    private Smjer nadreden;
+// ne zaboraviti get set
 
+    public Smjer getNadreden() {
+        return nadreden;
+    }
+
+    public void setNadreden(Smjer nadreden) {
+        this.nadreden = nadreden;
+    }
     
     // nakon getera i setera idem u hibernate config i mapiram Smjer
     public String getNaziv() {
