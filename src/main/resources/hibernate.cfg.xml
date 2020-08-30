@@ -47,6 +47,7 @@
          <mapping class="hr.edunova.horvat.model.Smjer" />
          <mapping class="hr.edunova.horvat.model.Polaznik" />
         <mapping class="hr.edunova.horvat.model.Predavac" />
+        <mapping class="hr.edunova.horvat.model.Grupa" />
         
     </session-factory>
 </hibernate-configuration>

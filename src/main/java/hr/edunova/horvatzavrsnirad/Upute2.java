@@ -44,6 +44,10 @@ public class Upute2 {
     Polaznik  i Predavac nasljedjuju Osoba
     
     nakon toga otici u hiberante config te dodati polaznik i predavac
+   
+    ************ Grupa ***************
+    
+    u grupi su upute za many to many  i many to one 
     */
     
 }
