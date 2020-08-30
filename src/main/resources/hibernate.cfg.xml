@@ -45,7 +45,8 @@
         
         <!-- Ovdje navodimo naše mapirane klase -->
          <mapping class="hr.edunova.horvat.model.Smjer" />
-        
+         <mapping class="hr.edunova.horvat.model.Polaznik" />
+        <mapping class="hr.edunova.horvat.model.Predavac" />
         
     </session-factory>
 </hibernate-configuration>

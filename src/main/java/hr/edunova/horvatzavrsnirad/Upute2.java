@@ -33,6 +33,17 @@ public class Upute2 {
     upute su u klasi Smjer 
     Nakon sto se kreira Smjer, mora se mapirati u hibernate cfg. 
     Pripaziti na create-drop u hiberante cfg. 
+    
+    ************* 3 Osoba, Polaznik, Predavac **************
+    
+    Zadatak napraviti maping koji ce biti identican na slici ERA
+    
+    osoba je abstract jer je necu koristiti, kao i klasa entitet
+    stoga na Osoba ne ide @Entity
+    Osoba je MappedSuperclass 
+    Polaznik  i Predavac nasljedjuju Osoba
+    
+    nakon toga otici u hiberante config te dodati polaznik i predavac
     */
     
 }
