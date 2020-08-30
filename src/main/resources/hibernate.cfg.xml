@@ -44,7 +44,7 @@
         
         
         <!-- Ovdje navodimo naše mapirane klase -->
-         <mapping class="hr.edunova.horvat.model.Osoba" />
+         <mapping class="hr.edunova.horvat.model.Smjer" />
         
         
     </session-factory>
