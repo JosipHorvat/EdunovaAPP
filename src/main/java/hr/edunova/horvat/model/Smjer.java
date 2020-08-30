@@ -20,7 +20,7 @@ public class Smjer extends Entitet{
     
     // radi se sa objektima tj njihovim omotacima
     private String naziv;
-    private Integer opis;
+    private String opis;
     private BigDecimal cijena;
     private Boolean verificiran;
     
@@ -46,11 +46,11 @@ public class Smjer extends Entitet{
         this.naziv = naziv;
     }
 
-    public Integer getOpis() {
+    public String getOpis() {
         return opis;
     }
 
-    public void setOpis(Integer opis) {
+    public void setOpis(String opis) {
         this.opis = opis;
     }
 

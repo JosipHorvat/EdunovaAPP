@@ -25,6 +25,7 @@ public class Grupa extends Entitet{
     // many to 1
     // Grupa pripada jednom i samo jednom smjeru
     // kada se cita anotacija: iz onog tamo skupa smjerova - many to 1
+  
     @ManyToOne
     private Smjer smjer;
     

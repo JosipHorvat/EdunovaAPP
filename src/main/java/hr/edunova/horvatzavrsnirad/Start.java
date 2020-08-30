@@ -6,10 +6,11 @@
 package hr.edunova.horvatzavrsnirad;
 
 import hr.edunova.horvat.utility.HibernateUtil;
+import hr.edunova.horvat.utility.PocetniInsert;
 
 
 public class Start {
     public static void main(String[] args) {
-        HibernateUtil.getSessionFactory().openSession();
+        PocetniInsert.izvedi();
     }
 }

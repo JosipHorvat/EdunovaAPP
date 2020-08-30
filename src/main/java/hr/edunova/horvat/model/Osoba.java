@@ -18,6 +18,7 @@ public abstract class Osoba extends Entitet{
     private String email;
     private String oib;
 
+    
     public String getIme() {
         return ime;
     }

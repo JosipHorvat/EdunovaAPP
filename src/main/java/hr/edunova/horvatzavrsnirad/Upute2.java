@@ -54,6 +54,11 @@ public class Upute2 {
     
     Za kreitanje novog ERA dijagrama :
     ctrl + razmaknica za oznacit, pa desni klik new Era dijagram
+    
+    https://www.google.com/search?sxsrf=ALeKk01GCZ9N9w8siZRsgSrHbnGG9W9Y0A%3A1598464625657&ei=caJGX6bYJ6jIrgT6iqHIDw&q=hibernate+mapping&oq=hibernate+mapping&gs_lcp=CgZwc3ktYWIQAzIJCCMQsAMQJxATMgkIABCwAxAHEB4yCQgAELADEAcQHjIJCAAQsAMQBxAeMgkIABCwAxAHEB4yCQgAELADEAcQHjIHCAAQsAMQQzIFCAAQsAMyBQgAELADMgUIABCwA1AAWABgyvABaAFwAHgAgAEAiAEAkgEAmAEAqgEHZ3dzLXdpesABAQ&sclient=psy-ab&ved=0ahUKEwjm1MrhuLnrAhUopIsKHXpFCPkQ4dUDCA0&uact=5
+
+    OVAJ LINK SADRZI UPUTE ZA HIBERNATE 
     */
+    
     
 }
