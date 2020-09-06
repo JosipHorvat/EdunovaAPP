@@ -6,6 +6,9 @@
 package hr.edunova.horvat.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -14,8 +17,10 @@ import javax.persistence.Entity;
 @Entity
 public class Polaznik extends Osoba{
   
+    
     private String brojUgovora;
-
+//alter table predavac add foreign key (osoba) references osoba(sifra);
+    
     public String getBrojUgovora() {
         return brojUgovora;
     }

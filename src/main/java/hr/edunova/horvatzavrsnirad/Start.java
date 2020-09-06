@@ -12,5 +12,6 @@ import hr.edunova.horvat.utility.PocetniInsert;
 public class Start {
     public static void main(String[] args) {
         PocetniInsert.izvedi();
+        HibernateUtil.getSessionFactory().openSession();
     }
 }

@@ -33,9 +33,9 @@ public class PocetniInsert {
    
    Faker faker = new Faker();
    
-   String[] oibi = {"44879378548","38714462960","48653367511",
-            "07463739447","55376858772","57121746664","45088797644","97067197029",
-            "36388448333","13633152331"};
+//   String[] oibi = {"44879378548","38714462960","48653367511",
+//            "07463739447","55376858772","57121746664","45088797644","97067197029",
+//            "36388448333","13633152331"};
    
         Predavac p , predavacJava=null, predavacPhp=null;
         
@@ -43,7 +43,7 @@ public class PocetniInsert {
        p = new Predavac();
        p.setIme(faker.name().firstName());
        p.setPrezime(faker.name().lastName());
-       p.setOib(oibi[i]);
+       p.setOib(GeneratorOiba.getOib());
        p.setIban(faker.finance().iban("HR"));
        p.setEmail(p.getIme().toLowerCase()+"."+p.getPrezime()+"@edunova.hr");
        session.save(p);
@@ -63,11 +63,8 @@ public class PocetniInsert {
             polaznik=new Polaznik();
             polaznik.setIme(faker.name().firstName());
             polaznik.setPrezime(faker.name().lastName());
-            if(i>9){
-                 polaznik.setOib(null);
-            }else{
-                 polaznik.setOib(oibi[i]);
-            }
+            polaznik.setOib(GeneratorOiba.getOib());
+            
            
             polaznik.setBrojUgovora("Ugovor_" + (i+1));
             polaznik.setEmail(polaznik.getIme().toLowerCase()+"."+polaznik.getPrezime().toLowerCase()+"@edunova.hr");

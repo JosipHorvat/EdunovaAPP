@@ -8,7 +8,10 @@ package hr.edunova.horvat.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -34,7 +37,12 @@ public class Grupa extends Entitet{
     private Predavac predavac;
     
     // Grupa ima vise polaznika
-    @ManyToMany
+  
+    @ManyToMany(cascade = CascadeType.ALL)
+@JoinTable(name = "clan", joinColumns = {
+@JoinColumn(name = "grupa_id")}, inverseJoinColumns = {
+@JoinColumn(name = "polaznik_id")})
+    //@ManyToMany
     private List<Polaznik> polaznici = new ArrayList<>();
     
     // ne zaboraviti geters i seters te hiberante cfg;

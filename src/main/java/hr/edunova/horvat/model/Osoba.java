@@ -1,7 +1,15 @@
 
 package hr.edunova.horvat.model;
 
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -10,7 +18,8 @@ import javax.persistence.MappedSuperclass;
 
 // Osoba je isto mapped super klas jer ce je nasljedit polaznik i predavac 
 @MappedSuperclass
-public abstract class Osoba extends Entitet{
+//@Inheritance(strategy = InheritanceType.JOINED)
+public  class Osoba extends Entitet{
     // Osoba je abstract jer je necu koristiti
     // nije potrebna sifra jer je Osoba nasljedila sifru od entitet
     private String ime;
@@ -18,7 +27,7 @@ public abstract class Osoba extends Entitet{
     private String email;
     private String oib;
 
-    
+   
     public String getIme() {
         return ime;
     }
