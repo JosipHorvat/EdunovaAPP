@@ -12,7 +12,8 @@ import org.jsoup.nodes.Document;
 import us.codecraft.xsoup.Xsoup;
 
 /**
- *
+ *NASTAVAK RADA NA 66:02 BIT CE JOS 2 COMMITA 
+ * 
  * @author Josip
  */
 public class GeneratorOiba {
