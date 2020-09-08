@@ -20,6 +20,7 @@ public class Start {
 //        HibernateUtil.getSessionFactory().openSession();
      Smjer s = new Smjer();
      ObradaSmjer obradaSmjer = new ObradaSmjer(s);
+     s.setNaziv("sssssssssssssssssssssssssssssssssssssssssssssssssssssss");
      
         try {
             obradaSmjer.create();
