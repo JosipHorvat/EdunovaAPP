@@ -8,6 +8,7 @@ package hr.edunova.horvat.controller;
 import hr.edunova.horvat.model.Smjer;
 import hr.edunova.horvat.utility.EdunovaException;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  *
@@ -23,6 +24,11 @@ public class ObradaSmjer extends Obrada<Smjer> {
         //  i on ce poslati nadklasi taj smjer
         super(smjer);
         // bit ce greska dok je nadklasa prazna
+    }
+    
+    @Override
+    public List<Smjer> getPodaci() {
+    return session.createQuery("from Smjer").list();
     }
 
     @Override
@@ -79,5 +85,7 @@ public class ObradaSmjer extends Obrada<Smjer> {
         throw new EdunovaException(poruka);
     }
     }
+
+    
 
 }

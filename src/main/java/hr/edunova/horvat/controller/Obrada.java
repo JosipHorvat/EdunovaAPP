@@ -3,6 +3,7 @@ package hr.edunova.horvat.controller;
 
 import hr.edunova.horvat.utility.EdunovaException;
 import hr.edunova.horvat.utility.HibernateUtil;
+import java.util.List;
 import org.hibernate.Session;
 
 /**
@@ -20,6 +21,7 @@ public abstract class Obrada<T>  {
    //taj T moze biti bilo koja klasa. tj taj parametar etintet
    protected Session session;
    
+   public abstract List<T> getPodaci();
    protected abstract void kontrolaCreate() throws EdunovaException;
    protected abstract void kontrolaUpdate() throws EdunovaException;
    protected abstract void kontrolaDelete() throws EdunovaException;
@@ -38,12 +40,27 @@ public abstract class Obrada<T>  {
     public Obrada() {
         this.session=HibernateUtil.getSessionFactory().openSession();
     }
+      
    
     public T create()throws EdunovaException{
         kontrolaCreate();
         save();
         return entitet;
     }
+    public T createAll(List<T> lista) throws EdunovaException {
+        session.beginTransaction();
+        for (T t : lista) {
+            setEntitet(t);
+            kontrolaCreate();
+            session.save(t);
+        }
+        session.getTransaction().commit();
+       
+      
+        return entitet;
+    }
+
+   
     
     public T update()throws EdunovaException{
         kontrolaUpdate();
@@ -65,6 +82,12 @@ public abstract class Obrada<T>  {
         session.save(entitet);
         session.getTransaction().commit();
     }
-    
+     public T getEntitet() {
+        return entitet;
+    }
+
+    public void setEntitet(T entitet) {
+        this.entitet = entitet;
+    }
    
 }

@@ -43,7 +43,7 @@ public class PocetniInsert {
        p = new Predavac();
        p.setIme(faker.name().firstName());
        p.setPrezime(faker.name().lastName());
-       p.setOib(GeneratorOiba.getOib());
+       p.setOib(Oib.getOibItCentrala());
        p.setIban(faker.finance().iban("HR"));
        p.setEmail(p.getIme().toLowerCase()+"."+p.getPrezime()+"@edunova.hr");
        session.save(p);
@@ -63,7 +63,7 @@ public class PocetniInsert {
             polaznik=new Polaznik();
             polaznik.setIme(faker.name().firstName());
             polaznik.setPrezime(faker.name().lastName());
-            polaznik.setOib(GeneratorOiba.getOib());
+            polaznik.setOib(Oib.getOibItCentrala());
             
            
             polaznik.setBrojUgovora("Ugovor_" + (i+1));
