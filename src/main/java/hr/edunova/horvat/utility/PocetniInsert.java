@@ -2,7 +2,9 @@
 package hr.edunova.horvat.utility;
 
 import com.github.javafaker.Faker;
+import hr.edunova.horvat.controller.ObradaOperater;
 import hr.edunova.horvat.model.Grupa;
+import hr.edunova.horvat.model.Operater;
 import hr.edunova.horvat.model.Polaznik;
 import hr.edunova.horvat.model.Predavac;
 import hr.edunova.horvat.model.Smjer;
@@ -10,6 +12,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Session;
 
 /**
@@ -20,9 +24,25 @@ public class PocetniInsert {
     
     public static void izvedi(){
         
-        
-        
         Session session = HibernateUtil.getSessionFactory().openSession();
+        
+        Operater operater = new Operater();
+        operater.setIme("Josip");
+        operater.setPrezime("Horvat");
+        operater.setUloga("oper");
+        operater.setEmail("josiph988@gmail.com");
+        operater.setLozinka("");
+        
+        ObradaOperater oo = new ObradaOperater();
+        oo.setEntitet(operater);
+        
+        try {
+            oo.create();
+        } catch (EdunovaException ex) {
+          ex.printStackTrace();      
+        }
+        
+        
    Smjer java = kreirajSmjer("Java programiranje", "Uce se java, sql itd...", new BigDecimal(4999.99), true);
    Smjer php = kreirajSmjer("PHP programiranje", "Loren ipsium", new BigDecimal(4000), false);
    
@@ -104,6 +124,10 @@ public class PocetniInsert {
         
         
     }
+//    public static void adminOperater(){
+//        Operater operater = new Operater();
+//        operater.setIme("Edunova");
+//    }
     
     
     private static Smjer kreirajSmjer(String naziv, String opis, BigDecimal cijena, Boolean verificiran){

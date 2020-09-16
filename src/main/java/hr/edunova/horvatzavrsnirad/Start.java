@@ -14,6 +14,7 @@ import hr.edunova.horvat.model.Smjer;
 import hr.edunova.horvat.utility.EdunovaException;
 import hr.edunova.horvat.utility.HibernateUtil;
 import hr.edunova.horvat.utility.PocetniInsert;
+import hr.edunova.horvat.view.Autorizacija;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,28 +22,32 @@ import java.util.logging.Logger;
 
 public class Start {
     public static void main(String[] args) {
-       //PocetniInsert.izvedi();
+       PocetniInsert.izvedi();
 //        HibernateUtil.getSessionFactory().openSession();
 
-   Polaznik p = new Polaznik();
-   ObradaPolaznik obradaPolaznik = new ObradaPolaznik();
-   obradaPolaznik.setEntitet(p);
-   
-        try {
-            obradaPolaznik.create();
-             } catch (EdunovaException ex) {
-            System.out.println(ex.getPoruka());    
-             }
-        
-        Predavac predavac = new Predavac();
-        ObradaPredavac op = new ObradaPredavac();
-        op.setEntitet(predavac);
-        
-        try {
-            op.create();
-            } catch (EdunovaException ex) {
-            System.out.println(ex.getPoruka());
-        }
+   // new Autorizacija().setVisible(true);
+
+
+//========= Unos i kontrola polaznik ====================
+//   Polaznik p = new Polaznik();
+//   ObradaPolaznik obradaPolaznik = new ObradaPolaznik();
+//   obradaPolaznik.setEntitet(p);
+//   
+//        try {
+//            obradaPolaznik.create();
+//             } catch (EdunovaException ex) {
+//            System.out.println(ex.getPoruka());    
+//             }
+//        
+//        Predavac predavac = new Predavac();
+//        ObradaPredavac op = new ObradaPredavac();
+//        op.setEntitet(predavac);
+//        
+//        try {
+//            op.create();
+//            } catch (EdunovaException ex) {
+//            System.out.println(ex.getPoruka());
+//        }
             
 //    Polaznik polaznik = new Polaznik();
 //    ObradaPolaznik obradaPolaznik = new ObradaPolaznik();

@@ -47,6 +47,15 @@
     <version>0.3.1</version>
 </dependency>
 
+<!--Ovo je bcrypt za lozinku  -->
+<!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+<dependency>
+    <groupId>org.mindrot</groupId>
+    <artifactId>jbcrypt</artifactId>
+    <version>0.3m</version>
+</dependency>
+
+
         
        </dependencies>
     <name>EdunovaJp22Josip</name>
