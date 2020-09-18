@@ -104,8 +104,8 @@ public class Autorizacija extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
-            pswLozinka.requestFocus();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER && pswLozinka.getPassword().length>0){
+           prijaviSe();
             // ako je stisnut enter prebacivam se na lozinku
         }
         
@@ -144,6 +144,7 @@ public class Autorizacija extends javax.swing.JFrame {
        InternetAddress address = new InternetAddress(txtEmail.getText());
        address.validate();
     }catch(AddressException e){
+            txtEmail.requestFocus();
              JOptionPane.showMessageDialog(rootPane, "Lozinka obavezno");
             return;
             }

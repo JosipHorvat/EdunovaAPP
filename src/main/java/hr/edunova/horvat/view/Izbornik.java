@@ -15,8 +15,18 @@ public class Izbornik extends javax.swing.JFrame {
     /** Creates new form Izbornik */
     public Izbornik() {
         initComponents();
+       jmNaslovGrana.setText(Aplikacija.NASLOV_APP);
         
         setTitle(Aplikacija.operater.getImeIPrezime());
+       
+      //if(!Aplikacija.operater.getUloga().equals("admin")){
+        //     jmiOperateri.setVisible(false);
+        //}
+//        if(!Aplikacija.isAdmin()){
+//          jmOperateri.setVisible(false);
+//        }
+        
+       jmOperateri.setVisible(Aplikacija.isAdmin());
     }
 
     /** This method is called from within the constructor to
@@ -28,7 +38,55 @@ public class Izbornik extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jmGrana = new javax.swing.JMenuBar();
+        jmNaslovGrana = new javax.swing.JMenu();
+        jmSmjerovi = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jmPolaznici = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jmPredavaci = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jmGrupe = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jmOperateri = new javax.swing.JMenuItem();
+        separator = new javax.swing.JPopupMenu.Separator();
+        jmIzlaz = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jmNaslovGrana.setText("NASLOV");
+
+        jmSmjerovi.setText("Smjer");
+        jmNaslovGrana.add(jmSmjerovi);
+        jmNaslovGrana.add(jSeparator1);
+
+        jmPolaznici.setText("Polaznici");
+        jmNaslovGrana.add(jmPolaznici);
+        jmNaslovGrana.add(jSeparator2);
+
+        jmPredavaci.setText("Predavaci");
+        jmNaslovGrana.add(jmPredavaci);
+        jmNaslovGrana.add(jSeparator3);
+
+        jmGrupe.setText("Grupe");
+        jmNaslovGrana.add(jmGrupe);
+        jmNaslovGrana.add(jSeparator4);
+
+        jmOperateri.setText("Operateri");
+        jmNaslovGrana.add(jmOperateri);
+        jmNaslovGrana.add(separator);
+
+        jmIzlaz.setText("Izlaz");
+        jmIzlaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmIzlazActionPerformed(evt);
+            }
+        });
+        jmNaslovGrana.add(jmIzlaz);
+
+        jmGrana.add(jmNaslovGrana);
+
+        setJMenuBar(jmGrana);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -38,11 +96,15 @@ public class Izbornik extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmIzlazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIzlazActionPerformed
+      dispose();
+    }//GEN-LAST:event_jmIzlazActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,6 +142,19 @@ public class Izbornik extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JMenuBar jmGrana;
+    private javax.swing.JMenuItem jmGrupe;
+    private javax.swing.JMenuItem jmIzlaz;
+    private javax.swing.JMenu jmNaslovGrana;
+    private javax.swing.JMenuItem jmOperateri;
+    private javax.swing.JMenuItem jmPolaznici;
+    private javax.swing.JMenuItem jmPredavaci;
+    private javax.swing.JMenuItem jmSmjerovi;
+    private javax.swing.JPopupMenu.Separator separator;
     // End of variables declaration//GEN-END:variables
 
 }

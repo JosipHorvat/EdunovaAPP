@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hr.edunova.horvatzavrsnirad;
+package hr.edunova.start;
 
 import hr.edunova.horvat.controller.ObradaPolaznik;
 import hr.edunova.horvat.controller.ObradaPredavac;
@@ -27,6 +27,8 @@ public class Start {
 
    new Autorizacija().setVisible(true);
 
+//===========INSERT ZA ADMINA ===========================  
+    
 
 //========= Unos i kontrola polaznik ====================
 //   Polaznik p = new Polaznik();

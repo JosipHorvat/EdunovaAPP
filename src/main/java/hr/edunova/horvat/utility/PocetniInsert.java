@@ -141,4 +141,30 @@ public class PocetniInsert {
     
     return smjer;
     }
+
+    public static void adminOperater() {
+        
+        
+        Operater operater = new Operater();
+        operater.setIme("Big");
+        operater.setPrezime("Boss");
+        operater.setUloga("Admin");
+        operater.setEmail("bossbigg@gmail.com");
+        operater.setOib(Oib.getOibItCentrala());
+        operater.setLozinka(BCrypt.hashpw("b", BCrypt.gensalt()));
+        
+        ObradaOperater oo = new ObradaOperater();
+        oo.setEntitet(operater);
+        
+        try {
+            oo.create();
+        } catch (EdunovaException ex) {
+          ex.printStackTrace();      
+        }
+        
+        
+        
+    }
+
+    
 }
