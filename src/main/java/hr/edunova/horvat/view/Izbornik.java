@@ -6,6 +6,13 @@
 
 package hr.edunova.horvat.view;
 
+import java.awt.BorderLayout;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+
 /**
  *
  * @author Josip
@@ -27,6 +34,23 @@ public class Izbornik extends javax.swing.JFrame {
 //        }
         
        jmOperateri.setVisible(Aplikacija.isAdmin());
+       
+       pnlGraf.setLayout(new BorderLayout());
+       
+      XYSeries series = new XYSeries("XY Chart");
+		XYSeriesCollection dataset = new XYSeriesCollection(series);
+		JFreeChart chart = ChartFactory.createTimeSeriesChart("Testing Chart", "Date", "Average Profit", dataset);
+		
+                ChartPanel cp = new ChartPanel(chart);
+                
+                pnlGraf.setLayout(new BorderLayout());
+                pnlGraf.add(cp,BorderLayout.CENTER);
+                pnlGraf.validate();
+		
+                
+                
+		
+        
     }
 
     /** This method is called from within the constructor to
@@ -38,6 +62,7 @@ public class Izbornik extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlGraf = new javax.swing.JPanel();
         jmGrana = new javax.swing.JMenuBar();
         jmNaslovGrana = new javax.swing.JMenu();
         jmSmjerovi = new javax.swing.JMenuItem();
@@ -53,6 +78,17 @@ public class Izbornik extends javax.swing.JFrame {
         jmIzlaz = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout pnlGrafLayout = new javax.swing.GroupLayout(pnlGraf);
+        pnlGraf.setLayout(pnlGrafLayout);
+        pnlGrafLayout.setHorizontalGroup(
+            pnlGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 504, Short.MAX_VALUE)
+        );
+        pnlGrafLayout.setVerticalGroup(
+            pnlGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 341, Short.MAX_VALUE)
+        );
 
         jmNaslovGrana.setText("NASLOV");
 
@@ -92,11 +128,11 @@ public class Izbornik extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(pnlGraf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addComponent(pnlGraf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -154,6 +190,7 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmPolaznici;
     private javax.swing.JMenuItem jmPredavaci;
     private javax.swing.JMenuItem jmSmjerovi;
+    private javax.swing.JPanel pnlGraf;
     private javax.swing.JPopupMenu.Separator separator;
     // End of variables declaration//GEN-END:variables
 
