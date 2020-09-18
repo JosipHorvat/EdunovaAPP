@@ -60,4 +60,8 @@ public  class Osoba extends Entitet{
         this.oib = oib;
     }
     
+    public String getImeIPrezime(){
+        return getIme()+ " " + getPrezime();
+    }
+    
 }

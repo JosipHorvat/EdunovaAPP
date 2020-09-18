@@ -22,10 +22,10 @@ import java.util.logging.Logger;
 
 public class Start {
     public static void main(String[] args) {
-       PocetniInsert.izvedi();
+//      PocetniInsert.izvedi();
 //        HibernateUtil.getSessionFactory().openSession();
 
-   // new Autorizacija().setVisible(true);
+   new Autorizacija().setVisible(true);
 
 
 //========= Unos i kontrola polaznik ====================

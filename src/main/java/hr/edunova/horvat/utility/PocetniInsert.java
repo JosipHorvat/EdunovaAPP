@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.hibernate.Session;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -31,7 +32,7 @@ public class PocetniInsert {
         operater.setPrezime("Horvat");
         operater.setUloga("oper");
         operater.setEmail("josiph988@gmail.com");
-        operater.setLozinka("");
+        operater.setLozinka(BCrypt.hashpw("j", BCrypt.gensalt()));
         
         ObradaOperater oo = new ObradaOperater();
         oo.setEntitet(operater);
