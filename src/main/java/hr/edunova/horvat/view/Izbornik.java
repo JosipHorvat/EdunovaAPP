@@ -6,10 +6,14 @@
 
 package hr.edunova.horvat.view;
 
+import com.toedter.calendar.JCalendar;
+import hr.edunova.horvat.controller.ObradaGrupa;
+import hr.edunova.horvat.model.Grupa;
 import java.awt.BorderLayout;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -35,23 +39,11 @@ public class Izbornik extends javax.swing.JFrame {
         
        jmOperateri.setVisible(Aplikacija.isAdmin());
        
-       pnlGraf.setLayout(new BorderLayout());
-       
-      XYSeries series = new XYSeries("XY Chart");
-		XYSeriesCollection dataset = new XYSeriesCollection(series);
-		JFreeChart chart = ChartFactory.createTimeSeriesChart("Testing Chart", "Date", "Average Profit", dataset);
-		
-                ChartPanel cp = new ChartPanel(chart);
-                
-                pnlGraf.setLayout(new BorderLayout());
-                pnlGraf.add(cp,BorderLayout.CENTER);
-                pnlGraf.validate();
-		
-                
-                
-		
-        
-    }
+      
+       //pripremiKalendar();
+       pripremiGraf();
+       pripremiKalendar();
+       }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -62,7 +54,11 @@ public class Izbornik extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlKalendar = new javax.swing.JPanel();
+        rbtnUkljuciKalendar = new javax.swing.JRadioButton();
+        rbtnIskljuciKalendar = new javax.swing.JRadioButton();
         pnlGraf = new javax.swing.JPanel();
+        tglGraf = new javax.swing.JToggleButton();
         jmGrana = new javax.swing.JMenuBar();
         jmNaslovGrana = new javax.swing.JMenu();
         jmSmjerovi = new javax.swing.JMenuItem();
@@ -78,17 +74,51 @@ public class Izbornik extends javax.swing.JFrame {
         jmIzlaz = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(null);
+        setSize(new java.awt.Dimension(400, 500));
+
+        javax.swing.GroupLayout pnlKalendarLayout = new javax.swing.GroupLayout(pnlKalendar);
+        pnlKalendar.setLayout(pnlKalendarLayout);
+        pnlKalendarLayout.setHorizontalGroup(
+            pnlKalendarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 235, Short.MAX_VALUE)
+        );
+        pnlKalendarLayout.setVerticalGroup(
+            pnlKalendarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 148, Short.MAX_VALUE)
+        );
+
+        rbtnUkljuciKalendar.setText("On");
+        rbtnUkljuciKalendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnUkljuciKalendarActionPerformed(evt);
+            }
+        });
+
+        rbtnIskljuciKalendar.setText("Off");
+        rbtnIskljuciKalendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnIskljuciKalendarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlGrafLayout = new javax.swing.GroupLayout(pnlGraf);
         pnlGraf.setLayout(pnlGrafLayout);
         pnlGrafLayout.setHorizontalGroup(
             pnlGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
+            .addGap(0, 225, Short.MAX_VALUE)
         );
         pnlGrafLayout.setVerticalGroup(
             pnlGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
+            .addGap(0, 156, Short.MAX_VALUE)
         );
+
+        tglGraf.setText("tglGraf");
+        tglGraf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tglGrafActionPerformed(evt);
+            }
+        });
 
         jmNaslovGrana.setText("NASLOV");
 
@@ -128,11 +158,31 @@ public class Izbornik extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlGraf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlGraf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(tglGraf)
+                        .addGap(10, 10, 10)
+                        .addComponent(rbtnUkljuciKalendar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbtnIskljuciKalendar))
+                    .addComponent(pnlKalendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlGraf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtnUkljuciKalendar)
+                    .addComponent(rbtnIskljuciKalendar)
+                    .addComponent(tglGraf))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlKalendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlGraf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(138, 138, 138))
         );
 
         pack();
@@ -142,41 +192,28 @@ public class Izbornik extends javax.swing.JFrame {
       dispose();
     }//GEN-LAST:event_jmIzlazActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Izbornik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Izbornik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Izbornik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Izbornik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void rbtnUkljuciKalendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnUkljuciKalendarActionPerformed
+        pnlKalendar.setVisible(true);
+      if(rbtnUkljuciKalendar.isSelected()){
+         rbtnIskljuciKalendar.setSelected(false);
+      }
+            
+        
+    }//GEN-LAST:event_rbtnUkljuciKalendarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Izbornik().setVisible(true);
-            }
-        });
-    }
+    private void rbtnIskljuciKalendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnIskljuciKalendarActionPerformed
+        pnlKalendar.setVisible(false);
+         if(rbtnIskljuciKalendar.isSelected()){
+           rbtnUkljuciKalendar.setSelected(false);
+         }
+    }//GEN-LAST:event_rbtnIskljuciKalendarActionPerformed
 
+    private void tglGrafActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglGrafActionPerformed
+      
+    }//GEN-LAST:event_tglGrafActionPerformed
+
+   
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
@@ -191,7 +228,51 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmPredavaci;
     private javax.swing.JMenuItem jmSmjerovi;
     private javax.swing.JPanel pnlGraf;
+    private javax.swing.JPanel pnlKalendar;
+    private javax.swing.JRadioButton rbtnIskljuciKalendar;
+    private javax.swing.JRadioButton rbtnUkljuciKalendar;
     private javax.swing.JPopupMenu.Separator separator;
+    private javax.swing.JToggleButton tglGraf;
     // End of variables declaration//GEN-END:variables
 
+     private void pripremiGraf(){
+       
+         ObradaGrupa obradaGrupa = new ObradaGrupa();
+		
+          DefaultPieDataset dataset = new DefaultPieDataset();
+          
+          for(Grupa g: obradaGrupa.getPodaci()){
+              dataset.setValue(g.getNaziv(),  g.getPolaznici().size());
+          }
+        
+          
+         JFreeChart chart = ChartFactory.createPieChart(
+                 "Broj polaznika po grupama",
+                 dataset,
+                 true,
+                 true,
+                 false);
+         
+         ChartPanel cp = new ChartPanel(chart); 
+         
+        pnlGraf.setLayout(new BorderLayout());
+        pnlGraf.add(cp);
+        pnlGraf.validate();
+
+                
+     }
+    private void pripremiKalendar(){
+        
+        pnlKalendar.setLayout(new BorderLayout());
+         
+        JCalendar cal = new JCalendar();
+        
+        pnlKalendar.setLayout(new BorderLayout());
+        pnlKalendar.add(cal,BorderLayout.CENTER);
+        pnlKalendar.validate();
+        
+       }
+     
+       
+    
 }

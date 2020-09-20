@@ -63,6 +63,11 @@ public class Autorizacija extends javax.swing.JFrame {
         jLabel2.setText("Lozinka");
 
         btnPrijava.setText("Prijava");
+        btnPrijava.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrijavaActionPerformed(evt);
+            }
+        });
         btnPrijava.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnPrijavaKeyReleased(evt);
@@ -104,23 +109,28 @@ public class Autorizacija extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER && pswLozinka.getPassword().length>0){
-           prijaviSe();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER && !txtEmail.getText().trim().isEmpty()){
+         pswLozinka.requestFocus();
             // ako je stisnut enter prebacivam se na lozinku
         }
         
     }//GEN-LAST:event_txtEmailKeyReleased
 
     private void pswLozinkaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswLozinkaKeyReleased
+      if (evt.getKeyCode() == KeyEvent.VK_ENTER && pswLozinka.getPassword().length>0){  
         prijaviSe();
         // ako je pustena tipka prebacivam se na ,etodu prijavi se 
-        
+      }
     }//GEN-LAST:event_pswLozinkaKeyReleased
 
     private void btnPrijavaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPrijavaKeyReleased
       prijaviSe();
       // takodjer ako je pustena tipka na buttonu idem u metodu prijai se 
     }//GEN-LAST:event_btnPrijavaKeyReleased
+
+    private void btnPrijavaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrijavaActionPerformed
+        prijaviSe();
+    }//GEN-LAST:event_btnPrijavaActionPerformed
 
     
 
