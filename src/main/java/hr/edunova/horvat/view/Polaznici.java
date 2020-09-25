@@ -5,8 +5,8 @@
  */
 package hr.edunova.horvat.view;
 
-import hr.edunova.horvat.controller.ObradaPredavac;
-import hr.edunova.horvat.model.Predavac;
+import hr.edunova.horvat.controller.ObradaPolaznik;
+import hr.edunova.horvat.model.Polaznik;
 import hr.edunova.horvat.utility.EdunovaException;
 import java.awt.Component;
 import javax.swing.DefaultListModel;
@@ -16,19 +16,19 @@ import javax.swing.JTextField;
  *
  * @author Josip
  */
-public class Predavaci extends javax.swing.JFrame {
+public class Polaznici extends javax.swing.JFrame {
 
-    private ObradaPredavac obrada;
-    private Predavac entitet;
+    private ObradaPolaznik obrada;
+    private Polaznik entitet;
 
     /**
-     * Creates new form Predavaci
+     * Creates new form Polaznici
      */
-    public Predavaci() {
+    public Polaznici() {
         initComponents();
         lstPodaci.setCellRenderer(new OsobaCellRenderer());
-        obrada = new ObradaPredavac();
-        setTitle(Aplikacija.operater.getImeIPrezime() + " -Predavaci");
+        obrada = new ObradaPolaznik();
+        setTitle(Aplikacija.operater.getImeIPrezime() + " -Polaznici");
         ucitajPodatke();
        
 
@@ -56,7 +56,7 @@ public class Predavaci extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtOib = new javax.swing.JTextField();
         IBAN = new javax.swing.JLabel();
-        txtIban = new javax.swing.JTextField();
+        txtBrojUgovora = new javax.swing.JTextField();
         btnPromijeni = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
         btnDodaj = new javax.swing.JButton();
@@ -80,7 +80,7 @@ public class Predavaci extends javax.swing.JFrame {
 
         jLabel4.setText("Email");
 
-        IBAN.setText("IBAN");
+        IBAN.setText("BrojUgovora");
 
         javax.swing.GroupLayout pnlPodaciLayout = new javax.swing.GroupLayout(pnlPodaci);
         pnlPodaci.setLayout(pnlPodaciLayout);
@@ -90,7 +90,7 @@ public class Predavaci extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtIban, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBrojUgovora, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(IBAN, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,7 +128,7 @@ public class Predavaci extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(IBAN)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtIban, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtBrojUgovora, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -199,7 +199,7 @@ public class Predavaci extends javax.swing.JFrame {
         entitet = lstPodaci.getSelectedValue();
         if (entitet == null) {
             return;
-            // sa ovim dobijem vrijednosti na odabranom predavacu
+            // sa ovim dobijem vrijednosti na odabranom Polazniku
         }
           // potencijalno bolje rješenje je korištenje Reflection API
         //https://docs.oracle.com/javase/tutorial/reflect/index.html
@@ -207,7 +207,12 @@ public class Predavaci extends javax.swing.JFrame {
         txtPrezime.setText(entitet.getPrezime());
         txtOib.setText(entitet.getOib());
         txtEmail.setText(entitet.getEmail());
-        txtIban.setText(entitet.getIban());
+        txtBrojUgovora.setText(entitet.getBrojUgovora());
+        
+        btnObrisi.setVisible(entitet.getGrupe().size()==0);
+        // cool line: 
+        // AKO  TO STO SI OZNACIO NEMA GRUPA MOZES OBRISATI
+        // AKO JE VECE OD 0 I IMA GRUPA NE MOZE SE OBRISATI
     }//GEN-LAST:event_lstPodaciValueChanged
 
     private void btnPromijeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromijeniActionPerformed
@@ -228,7 +233,7 @@ public class Predavaci extends javax.swing.JFrame {
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         lblPoruka.setText("");
-        entitet = new Predavac();
+        entitet = new Polaznik();
 
         postaviVrijednostiUEntitet();
 
@@ -271,10 +276,10 @@ public class Predavaci extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPoruka;
-    private javax.swing.JList<Predavac> lstPodaci;
+    private javax.swing.JList<Polaznik> lstPodaci;
     private javax.swing.JPanel pnlPodaci;
+    private javax.swing.JTextField txtBrojUgovora;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtIban;
     private javax.swing.JTextField txtIme;
     private javax.swing.JTextField txtOib;
     private javax.swing.JTextField txtPrezime;
@@ -282,23 +287,23 @@ public class Predavaci extends javax.swing.JFrame {
 
     private void ucitajPodatke() {
 
-        DefaultListModel<Predavac> m = new DefaultListModel<>();
+        DefaultListModel<Polaznik> m = new DefaultListModel<>();
 
         //1 nacin
         obrada.getPodaci().forEach(s -> m.addElement(s));
 
         //2 nacin
-//        List<Predavac> lista = obrada.getPodaci();
+//        List<Polaznik> lista = obrada.getPodaci();
 //        for(int i = 0; i<lista.size(); i++){
 //            m.addElement(lista.get(i));
 //        }
         //3 nacin
-//        for(Predavac s: lista){
+//        for(Polaznik s: lista){
 //            m.addElement(s);
 //        }
         lstPodaci.setModel(m);
         // Vazno nece raditi jer je u Design na toj listi (lstPodaci) Code - TypeParameters "String"
-        // a treba biti Predavac
+        // a treba biti Polaznik
     }
 
     private void ocistiPolja() {
@@ -327,7 +332,7 @@ public class Predavaci extends javax.swing.JFrame {
 
         entitet.setIme(txtIme.getText());
         entitet.setPrezime(txtPrezime.getText());
-        entitet.setIban(txtIban.getText());
+        entitet.setBrojUgovora(txtBrojUgovora.getText());
         entitet.setEmail(txtEmail.getText());
         entitet.setOib(txtOib.getText());
         

@@ -28,7 +28,7 @@ public class Start {
    new Autorizacija().setVisible(true);
 
 //===========INSERT ZA ADMINA ===========================  
-    
+ //   PocetniInsert.adminOperater();
 
 //========= Unos i kontrola polaznik ====================
 //   Polaznik p = new Polaznik();

@@ -5,6 +5,7 @@
  */
 package hr.edunova.horvat.view;
 
+import hr.edunova.horvat.model.Osoba;
 import hr.edunova.horvat.model.Predavac;
 import java.awt.Color;
 import java.awt.Component;
@@ -16,11 +17,11 @@ import javax.swing.ListCellRenderer;
  *
  * @author Josip
  */
-public class PredavacCellRenderer extends JLabel implements ListCellRenderer<Predavac>{
+public class OsobaCellRenderer extends JLabel implements ListCellRenderer<Osoba>{
 
     @Override
-    public Component getListCellRendererComponent(JList<? extends Predavac> list,
-            Predavac value, int index, boolean isSelected, boolean cellHasFocus) {
+    public Component getListCellRendererComponent(JList<? extends Osoba> list,
+            Osoba value, int index, boolean isSelected, boolean cellHasFocus) {
         
         setText(value.getIme() + " "+ value.getPrezime());
         // predavac je nazvan value 

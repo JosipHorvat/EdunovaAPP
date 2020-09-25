@@ -38,6 +38,9 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
+         if(entitet.getGrupe().size()>0){
+            throw new EdunovaException("Polaznik se ne moze obrisati jer je u jednoj ili vise grupa");
+        }
     }
 
     private void kontrolaBrojUgovora() throws EdunovaException{
