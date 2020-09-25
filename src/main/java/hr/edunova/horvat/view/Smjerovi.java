@@ -17,7 +17,7 @@ import javax.swing.DefaultListModel;
  * @author Josip
  */
 public class Smjerovi extends javax.swing.JFrame {
-    
+
     private ObradaSmjer obrada;
     private Smjer entitet;
 
@@ -27,7 +27,7 @@ public class Smjerovi extends javax.swing.JFrame {
     public Smjerovi() {
         initComponents();
         obrada = new ObradaSmjer();
-        setTitle(Aplikacija.operater.getImeIPrezime());
+        setTitle(Aplikacija.operater.getImeIPrezime() + " -Smjerovi");
         ucitajPodatke();
 
     }
@@ -172,28 +172,28 @@ public class Smjerovi extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged
-        if(evt.getValueIsAdjusting()){
-            return;      
+        if (evt.getValueIsAdjusting()) {
+            return;
         }
-         entitet=lstPodaci.getSelectedValue();
-         if(entitet==null){
-             return;
-             // sa ovim dobijem vrijednosti na odabranom smjeru
-         }
-         txtNaziv.setText(entitet.getNaziv());
-         txtOpis.setText(entitet.getOpis());
-         txtCijena.setText(entitet.getCijena().toString());// problem cijena je big decimal a txt je string
-         chbVerificiran.setSelected(entitet.getVerificiran());
-         
-         System.out.println(entitet.getOpis());
+        entitet = lstPodaci.getSelectedValue();
+        if (entitet == null) {
+            return;
+            // sa ovim dobijem vrijednosti na odabranom smjeru
+        }
+        txtNaziv.setText(entitet.getNaziv());
+        txtOpis.setText(entitet.getOpis());
+        txtCijena.setText(entitet.getCijena().toString());// problem cijena je big decimal a txt je string
+        chbVerificiran.setSelected(entitet.getVerificiran());
+
+        System.out.println(entitet.getOpis());
     }//GEN-LAST:event_lstPodaciValueChanged
 
     private void btnPromijeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromijeniActionPerformed
-      entitet=lstPodaci.getSelectedValue();
-      if(entitet==null){
-          return;
-      }
-      postaviVrijednostiUEntitet();
+        entitet = lstPodaci.getSelectedValue();
+        if (entitet == null) {
+            return;
+        }
+        postaviVrijednostiUEntitet();
         try {
             obrada.update();
             ucitajPodatke();
@@ -201,30 +201,42 @@ public class Smjerovi extends javax.swing.JFrame {
         } catch (EdunovaException e) {
             lblPoruka.setText(e.getPoruka());
         }
-      
+
     }//GEN-LAST:event_btnPromijeniActionPerformed
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         lblPoruka.setText("");
         entitet = new Smjer();
-      
-  postaviVrijednostiUEntitet();
-    
-    obrada.setEntitet(entitet);
-    
-    try{
-    obrada.create();
-    ucitajPodatke();
-    }catch (EdunovaException ex){
-        lblPoruka.setText(ex.getPoruka());
-    }
+
+        postaviVrijednostiUEntitet();
+
+        try {
+            obrada.create();
+            ucitajPodatke();
+            ocistiPolja();
+        } catch (EdunovaException ex) {
+            lblPoruka.setText(ex.getPoruka());
+        }
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
-        // TODO add your handling code here:
+        entitet = lstPodaci.getSelectedValue();
+        if (entitet == null) {
+            return;
+        }
+
+        obrada.setEntitet(entitet);
+
+        try {
+            obrada.delete();
+            ucitajPodatke();
+            ocistiPolja();
+        } catch (EdunovaException e) {
+            lblPoruka.setText(e.getPoruka());
+        }
+
     }//GEN-LAST:event_btnObrisiActionPerformed
 
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
@@ -244,47 +256,46 @@ public class Smjerovi extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void ucitajPodatke() {
-            
+
         DefaultListModel<Smjer> m = new DefaultListModel<>();
-        
+
         //1 nacin
-        obrada.getPodaci().forEach(s->m.addElement(s));
-        
+        obrada.getPodaci().forEach(s -> m.addElement(s));
+
         //2 nacin
 //        List<Smjer> lista = obrada.getPodaci();
 //        for(int i = 0; i<lista.size(); i++){
 //            m.addElement(lista.get(i));
 //        }
-        
         //3 nacin
 //        for(Smjer s: lista){
 //            m.addElement(s);
 //        }
-
-     lstPodaci.setModel(m);
-     // Vazno nece raditi jer je u Design na toj listi (lstPodaci) Code - TypeParameters "String"
-     // a treba biti Smjer
+        lstPodaci.setModel(m);
+        // Vazno nece raditi jer je u Design na toj listi (lstPodaci) Code - TypeParameters "String"
+        // a treba biti Smjer
     }
-    private  void ocistiPolja(){
-     
+
+    private void ocistiPolja() {
+
         txtNaziv.setText("");
-         txtOpis.setText("");
-         txtCijena.setText("");
-         chbVerificiran.setSelected(false);
+        txtOpis.setText("");
+        txtCijena.setText("");
+        chbVerificiran.setSelected(false);
     }
 
     private void postaviVrijednostiUEntitet() {
 
-            entitet.setNaziv(txtNaziv.getText());
-      entitet.setOpis(txtOpis.getText());
-      // za cijenu treba Ovako:
-    try{
-        entitet.setCijena(new BigDecimal(txtCijena.getText()));
-    }catch(Exception e){
-        entitet.setCijena(BigDecimal.ZERO);
-        // U obrada set cijena smo rekli da cijena mora biti veca od nule     
-    }
-    entitet.setVerificiran(chbVerificiran.isSelected());
-    obrada.setEntitet(entitet);
+        entitet.setNaziv(txtNaziv.getText());
+        entitet.setOpis(txtOpis.getText());
+        // za cijenu treba Ovako:
+        try {
+            entitet.setCijena(new BigDecimal(txtCijena.getText()));
+        } catch (Exception e) {
+            entitet.setCijena(BigDecimal.ZERO);
+            // U obrada set cijena smo rekli da cijena mora biti veca od nule     
+        }
+        entitet.setVerificiran(chbVerificiran.isSelected());
+        obrada.setEntitet(entitet);
     }
 }

@@ -6,8 +6,11 @@
 package hr.edunova.horvat.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,6 +26,18 @@ public class Smjer extends Entitet{
     private String opis;
     private BigDecimal cijena;
     private Boolean verificiran;
+    
+    // Ovdje kazemo da je grupa mapirana sa smjer(Onaj smjer koji je u grupi) 
+     @OneToMany(mappedBy = "smjer")
+    private List<Grupa> grupe = new ArrayList<>();
+
+    public List<Grupa> getGrupe() {
+        return grupe;
+    }
+
+    public void setGrupe(List<Grupa> grupe) {
+        this.grupe = grupe;
+    }
     
     // veza sam na sebe nadredjen
     @ManyToOne
