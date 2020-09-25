@@ -6,6 +6,7 @@
 package hr.edunova.horvat.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -27,6 +28,20 @@ private User user;
 public class Predavac extends Osoba {
       
     private String iban;
+    
+    // i predavac kao i smjer ce imati listu grupa koje su mapirane sa strane predavac
+    // kad odem u grupa imas Predavac predavac. E TO JE TAJ PREDAVAC LOL 
+    //ne zaboravi getere i setere za tu listu grupaa
+     @OneToMany(mappedBy = "predavac")
+    private List<Grupa> grupe = new ArrayList<>();
+
+    public List<Grupa> getGrupe() {
+        return grupe;
+    }
+
+    public void setGrupe(List<Grupa> grupe) {
+        this.grupe = grupe;
+    }
 
   
     

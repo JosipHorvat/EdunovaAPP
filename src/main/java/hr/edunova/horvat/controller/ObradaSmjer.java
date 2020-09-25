@@ -48,7 +48,9 @@ public class ObradaSmjer extends Obrada<Smjer> {
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-
+        if(entitet.getGrupe().size()>0){
+            throw new EdunovaException("Smjer se ne moze obrisati jer ima jednu ili vise grupa");
+        }
     }
 
     private void kontrolaNaziv() throws EdunovaException {

@@ -22,6 +22,9 @@ public class ObradaPredavac extends ObradaOsoba<Predavac> {
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
+         if(entitet.getGrupe().size()>0){
+            throw new EdunovaException("Predavac se ne moze obrisati jer vodi jednu ili vise grupa");
+        }
     }
     //NIJE BIO NAPRAVIO KONTROLA CREATE I UPDATE JER ONA VEC POSTOJI U OSOBA
 

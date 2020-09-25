@@ -74,7 +74,6 @@ public class Izbornik extends javax.swing.JFrame {
         jmIzlaz = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(null);
         setSize(new java.awt.Dimension(400, 500));
 
         javax.swing.GroupLayout pnlKalendarLayout = new javax.swing.GroupLayout(pnlKalendar);
@@ -136,6 +135,11 @@ public class Izbornik extends javax.swing.JFrame {
         jmNaslovGrana.add(jSeparator2);
 
         jmPredavaci.setText("Predavaci");
+        jmPredavaci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmPredavaciActionPerformed(evt);
+            }
+        });
         jmNaslovGrana.add(jmPredavaci);
         jmNaslovGrana.add(jSeparator3);
 
@@ -221,6 +225,10 @@ public class Izbornik extends javax.swing.JFrame {
         // ovdje kada se klikne na smjerovi 
         new Smjerovi().setVisible(true);
     }//GEN-LAST:event_jmSmjeroviActionPerformed
+
+    private void jmPredavaciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPredavaciActionPerformed
+       new Predavaci().setVisible(true);
+    }//GEN-LAST:event_jmPredavaciActionPerformed
 
    
     
