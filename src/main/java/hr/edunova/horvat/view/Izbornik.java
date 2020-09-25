@@ -73,7 +73,7 @@ public class Izbornik extends javax.swing.JFrame {
         separator = new javax.swing.JPopupMenu.Separator();
         jmIzlaz = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(null);
         setSize(new java.awt.Dimension(400, 500));
 
@@ -123,6 +123,11 @@ public class Izbornik extends javax.swing.JFrame {
         jmNaslovGrana.setText("NASLOV");
 
         jmSmjerovi.setText("Smjer");
+        jmSmjerovi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSmjeroviActionPerformed(evt);
+            }
+        });
         jmNaslovGrana.add(jmSmjerovi);
         jmNaslovGrana.add(jSeparator1);
 
@@ -211,6 +216,11 @@ public class Izbornik extends javax.swing.JFrame {
     private void tglGrafActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglGrafActionPerformed
       
     }//GEN-LAST:event_tglGrafActionPerformed
+
+    private void jmSmjeroviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSmjeroviActionPerformed
+        // ovdje kada se klikne na smjerovi 
+        new Smjerovi().setVisible(true);
+    }//GEN-LAST:event_jmSmjeroviActionPerformed
 
    
     

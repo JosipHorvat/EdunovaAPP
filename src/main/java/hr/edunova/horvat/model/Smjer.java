@@ -69,5 +69,13 @@ public class Smjer extends Entitet{
     public void setVerificiran(Boolean verificiran) {
         this.verificiran = verificiran;
     }
+
+    @Override
+    public String toString() {
+    return getNaziv();
+    // Za Listu u view Smjerovi.
+    // Pokazuje ispravno podatke iz liste.
+    }
+    
     
 }

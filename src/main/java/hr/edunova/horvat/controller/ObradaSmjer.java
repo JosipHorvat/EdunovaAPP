@@ -25,6 +25,10 @@ public class ObradaSmjer extends Obrada<Smjer> {
         super(smjer);
         // bit ce greska dok je nadklasa prazna
     }
+
+    public ObradaSmjer() {
+       super();
+    }  
     
     @Override
     public List<Smjer> getPodaci() {
@@ -39,7 +43,7 @@ public class ObradaSmjer extends Obrada<Smjer> {
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-
+        kontrolaNaziv();
     }
 
     @Override
