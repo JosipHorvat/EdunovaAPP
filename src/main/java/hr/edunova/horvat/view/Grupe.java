@@ -27,25 +27,30 @@ public class Grupe extends javax.swing.JFrame {
 
     private ObradaGrupa obrada;
     private Grupa entitet;
+
     /**
      * Creates new form Grupe
      */
     public Grupe() {
         initComponents();
         obrada = new ObradaGrupa();
-        setTitle(Aplikacija.operater.getImeIPrezime()+ " - Grupe");
+        setTitle(Aplikacija.operater.getImeIPrezime() + " - Grupe");
         ucitajPodatke();
-        
+
         DefaultComboBoxModel<Smjer> ms = new DefaultComboBoxModel<>();
-        new ObradaSmjer().getPodaci().forEach(s-> {ms.addElement(s);});
+        new ObradaSmjer().getPodaci().forEach(s -> {
+            ms.addElement(s);
+        });
         cmbSmjer.setModel(ms);
-        
-          DefaultComboBoxModel<Predavac> mp = new DefaultComboBoxModel<>();
-        new ObradaPredavac().getPodaci().forEach(p-> {mp.addElement(p);});
+
+        DefaultComboBoxModel<Predavac> mp = new DefaultComboBoxModel<>();
+        new ObradaPredavac().getPodaci().forEach(p -> {
+            mp.addElement(p);
+        });
         cmbPredavac.setRenderer(new OsobaCellRenderer());
         cmbPredavac.setModel(mp);
-        
-         DatePickerSettings dps = new DatePickerSettings(new Locale("hr","HR"));
+
+        DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
         dps.setFormatForDatesCommonEra("dd.MM.yyyy");
         dpiDatumPocetka.setSettings(dps);
     }
@@ -79,6 +84,11 @@ public class Grupe extends javax.swing.JFrame {
         setResizable(false);
 
         lstPodaci.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstPodaci.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstPodaciValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstPodaci);
 
         jTextField1.setText("Naziv");
@@ -254,13 +264,49 @@ public class Grupe extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnObrisiActionPerformed
 
+    private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged
+     
+           if (evt.getValueIsAdjusting()) {
+            return;
+        }
+
+        entitet = lstPodaci.getSelectedValue();
+        if (entitet == null) {
+            return;
+        }
+        
+        txtNaziv.setText(entitet.getNaziv());
+        // za ovo bi trebao hashCode i equals override u Smjer.java, možda i lombok pomogne
+        //cmbSmjerovi.setSelectedItem(entitet.getSmjer());
+        
+         DefaultComboBoxModel<Smjer> ms = (DefaultComboBoxModel<Smjer>) cmbSmjer.getModel();
+        for (int i = 0; i < ms.getSize(); i++) {
+            if (ms.getElementAt(i).getId().equals(entitet.getSmjer().getId())) {
+                cmbSmjer.setSelectedIndex(i);
+                break;
+            }
+        }
+
+        DefaultComboBoxModel<Predavac> mp = (DefaultComboBoxModel<Predavac>) cmbPredavac.getModel();
+        for (int i = 0; i < mp.getSize(); i++) {
+            if (mp.getElementAt(i).getId().equals(entitet.getPredavac().getId())) {
+                cmbPredavac.setSelectedIndex(i);
+                break;
+            }
+        }
+
+        dpiDatumPocetka.setDate(entitet.getDatumpocetka().toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate());
+    }//GEN-LAST:event_lstPodaciValueChanged
+
     private void ucitajPodatke() {
         DefaultListModel<Grupa> m = new DefaultListModel<>();
-        obrada.getPodaci().forEach(s->m.addElement(s));
+        obrada.getPodaci().forEach(s -> m.addElement(s));
         lstPodaci.setModel(m);
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnObrisi;
@@ -280,11 +326,12 @@ public class Grupe extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void postaviVrijednostiUEntitet() {
-   entitet.setNaziv(txtNaziv.getText());
-       entitet.setSmjer((Smjer)cmbSmjer.getSelectedItem());
-       entitet.setPredavac((Predavac)cmbPredavac.getSelectedItem());
-       entitet.setDatumpocetka(Date.from(dpiDatumPocetka.getDate().atStartOfDay()
-      .atZone(ZoneId.systemDefault())
-      .toInstant()));
-       obrada.setEntitet(entitet);    }
+        entitet.setNaziv(txtNaziv.getText());
+        entitet.setSmjer((Smjer) cmbSmjer.getSelectedItem());
+        entitet.setPredavac((Predavac) cmbPredavac.getSelectedItem());
+        entitet.setDatumpocetka(Date.from(dpiDatumPocetka.getDate().atStartOfDay()
+                .atZone(ZoneId.systemDefault())
+                .toInstant()));
+        obrada.setEntitet(entitet);
+    }
 }
