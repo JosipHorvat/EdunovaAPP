@@ -23,7 +23,7 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
     
     public List<Polaznik> getPodaci(String uvjet){
         return  session.createQuery("from Polaznik p "
-              + " where concat(p.ime, ' ', p.prezime) "
+              + " where concat(p.ime, ' ', p.prezime, ' ', p.oib) "
               + " like :uvjet ")
               .setParameter("uvjet", "%"+uvjet+"%")
               .setMaxResults(20)
@@ -34,6 +34,7 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
     protected void kontrolaCreate() throws EdunovaException {
         super.kontrolaCreate();
         kontrolaBrojUgovora();
+        kontrolaOibBaza();
         // sada sa super uzmem sto mi treba iz parent klase osoba
         // prvo se sve kontrolira u nad klasi 
         
@@ -43,6 +44,9 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
+         super.kontrolaCreate();
+        kontrolaBrojUgovora();
+        kontrolaOibBaza();
     }
 
     @Override
@@ -58,4 +62,15 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
         }
     }
     
+     private void kontrolaOibBaza() throws EdunovaException{
+       List<Polaznik> lista = session.createQuery(""
+               + " from Polaznik p "
+               + " where p.oib=:oib "
+               )
+               .setParameter("oib", entitet.getOib())
+               .list();
+       if(lista.size()>0){
+           throw  new EdunovaException("Oib je dodjeljen " + lista.get(0).getImeIPrezime() + ", odaberite drugi OIB");
+       }
+     }
 }

@@ -8,6 +8,7 @@ package hr.edunova.horvat.view;
 import hr.edunova.horvat.controller.ObradaPolaznik;
 import hr.edunova.horvat.model.Polaznik;
 import hr.edunova.horvat.utility.EdunovaException;
+import hr.edunova.horvat.utility.Oib;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultListModel;
@@ -58,6 +59,7 @@ public class Polaznici extends javax.swing.JFrame {
         txtOib = new javax.swing.JTextField();
         IBAN = new javax.swing.JLabel();
         txtBrojUgovora = new javax.swing.JTextField();
+        btnDovuciOib = new javax.swing.JButton();
         btnPromijeni = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
         btnDodaj = new javax.swing.JButton();
@@ -85,6 +87,13 @@ public class Polaznici extends javax.swing.JFrame {
 
         IBAN.setText("BrojUgovora");
 
+        btnDovuciOib.setText("Dovuci OIB");
+        btnDovuciOib.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDovuciOibActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlPodaciLayout = new javax.swing.GroupLayout(pnlPodaci);
         pnlPodaci.setLayout(pnlPodaciLayout);
         pnlPodaciLayout.setHorizontalGroup(
@@ -104,6 +113,8 @@ public class Polaznici extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDovuciOib)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPodaciLayout.createSequentialGroup()
                 .addContainerGap()
@@ -123,7 +134,9 @@ public class Polaznici extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDovuciOib))
                 .addGap(20, 20, 20)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -190,7 +203,7 @@ public class Polaznici extends javax.swing.JFrame {
                         .addComponent(btnPromijeni, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 33, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(pnlPodaci, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -303,10 +316,16 @@ public class Polaznici extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtUvjetKeyReleased
 
+    private void btnDovuciOibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDovuciOibActionPerformed
+      
+        txtOib.setText(Oib.getOibItCentrala());
+    }//GEN-LAST:event_btnDovuciOibActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IBAN;
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnDovuciOib;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPromijeni;
     private javax.swing.JButton btnTrazi;
