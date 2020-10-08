@@ -47,7 +47,8 @@ public class ObradaPredavac extends ObradaOsoba<Predavac> {
     private void kontrolaIban() throws EdunovaException{
 if(entitet.getIban()==null || entitet.getIban().isEmpty()){
             throw new EdunovaException("Iban obavezno");
-        }      }
+        }     
+    }
     
     
     
