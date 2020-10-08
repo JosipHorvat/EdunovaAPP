@@ -149,6 +149,11 @@ public class Izbornik extends javax.swing.JFrame {
         jmNaslovGrana.add(jSeparator3);
 
         jmGrupe.setText("Grupe");
+        jmGrupe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmGrupeActionPerformed(evt);
+            }
+        });
         jmNaslovGrana.add(jmGrupe);
         jmNaslovGrana.add(jSeparator4);
 
@@ -238,6 +243,10 @@ public class Izbornik extends javax.swing.JFrame {
     private void jmPolazniciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPolazniciActionPerformed
         new Polaznici().setVisible(true);
     }//GEN-LAST:event_jmPolazniciActionPerformed
+
+    private void jmGrupeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGrupeActionPerformed
+        new Grupe().setVisible(true);
+    }//GEN-LAST:event_jmGrupeActionPerformed
 
    
     
