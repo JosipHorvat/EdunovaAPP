@@ -27,8 +27,8 @@ public class OsobaCellRenderer extends JLabel implements ListCellRenderer<Osoba>
         // predavac je nazvan value 
         
         if(isSelected){
-            setBackground(Color.WHITE);
-            setForeground(Color.BLUE);
+            setBackground(Color.BLUE);
+            setForeground(Color.RED);
         }else{
             setBackground(Color.WHITE);
             setForeground(Color.BLACK);
