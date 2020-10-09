@@ -43,7 +43,7 @@ public class ObradaSmjer extends Obrada<Smjer> {
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-        kontrolaNaziv();
+       kontrolaCreate();
     }
 
     @Override

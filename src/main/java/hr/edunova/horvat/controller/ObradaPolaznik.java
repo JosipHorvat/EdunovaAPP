@@ -34,7 +34,7 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
     protected void kontrolaCreate() throws EdunovaException {
         super.kontrolaCreate();
         kontrolaBrojUgovora();
-        kontrolaOibBaza();
+        kontrolaOibBazaKreiraj();
         // sada sa super uzmem sto mi treba iz parent klase osoba
         // prvo se sve kontrolira u nad klasi 
         
@@ -46,7 +46,7 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
     protected void kontrolaUpdate() throws EdunovaException {
          super.kontrolaCreate();
         kontrolaBrojUgovora();
-        kontrolaOibBaza();
+        kontrolaOibBazaPromijeni();
     }
 
     @Override
@@ -62,7 +62,7 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
         }
     }
     
-     private void kontrolaOibBaza() throws EdunovaException{
+     private void kontrolaOibBazaKreiraj() throws EdunovaException{
        List<Polaznik> lista = session.createQuery(""
                + " from Polaznik p "
                + " where p.oib=:oib "
@@ -73,4 +73,18 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
            throw  new EdunovaException("Oib je dodjeljen " + lista.get(0).getImeIPrezime() + ", odaberite drugi OIB");
        }
      }
+     
+      private void kontrolaOibBazaPromijeni() throws EdunovaException{
+          
+            List<Polaznik> lista = session.createQuery(""
+               + " from Polaznik p "
+               + " where p.oib=:oib and p.id!=:id"
+               )
+               .setParameter("oib", entitet.getOib())
+               .setParameter("id", entitet.getId())
+               .list();
+       if(lista.size()>0){
+           throw  new EdunovaException("Oib je dodjeljen " + lista.get(0).getImeIPrezime() + ", odaberite drugi OIB");
+       }
+      }
 }

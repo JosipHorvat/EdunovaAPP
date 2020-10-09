@@ -22,17 +22,37 @@ public class ObradaGrupa extends Obrada<Grupa>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-
+        kontrolaNaziv();
     }
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-
+        kontrolaNaziv();
     }
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          if(entitet.getPolaznici().size()>0){
+            throw new EdunovaException("Grupa se ne može obrisati jer ima jednog ili više polaznika");
+        }
+    }
+    
+     private void kontrolaNaziv() throws EdunovaException{
+       kontrolaNull(entitet.getNaziv(), "Naziv nije definiran");
+
+        if(entitet.getNaziv().isEmpty()){
+            throw new EdunovaException("Naziv nije postavljen, unijeti naziv");
+        }
+
+
+    }
+
+
+
+    private void kontrolaNull(Object o, String poruka) throws EdunovaException{
+        if(o==null){
+            throw new EdunovaException(poruka);
+        }
     }
     
 }
