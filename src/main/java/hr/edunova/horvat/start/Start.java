@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hr.edunova.start;
+package hr.edunova.horvat.start;
 
 import hr.edunova.horvat.controller.ObradaPolaznik;
 import hr.edunova.horvat.controller.ObradaPredavac;
